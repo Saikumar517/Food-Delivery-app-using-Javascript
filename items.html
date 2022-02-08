@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./cart.css">
+    <script defer src="./script.js"></script>
+    <script>
+      function Delete(e){
+			let items = [];
+			JSON.parse(localStorage.getItem('items')).map(data=>{
+				if(data.id != e.parentElement.parentElement.children[0].textContent){
+					items.push(data);
+				}
+			});
+			localStorage.setItem('items',JSON.stringify(items));
+			window.location.reload();
+		};
+    </script>
+    <title>Food Munch</title>
+  </head>
+  <body>
+    <header>
+      <div class="navigation-container">
+        <div class="left-logo">
+          <img class="logo" src="./fast-food.png" alt="logo" />
+          <h1 class="headingElement">Food Munch</h1>
+        </div>
+        <ul class="side-nav">
+          <a href="./webpage.html"><li>Home</li></a>
+          <a href="#"><li>Contact</li></a>
+          <a href="./index.html"><li>Logout</li></a>
+          <li class="cart-icon">
+              <img
+                class="cart-img"
+                src="./shopping-cart-empty-side-view.png"
+                alt="Cart"
+              />
+              <span class="count">0</span>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div id="popup" class="popup "></div>
+
+      <div id ="cartBox" class="cartBox">
+        <div class="cart">
+          <i class="fa fa-close">close</i>
+          <h1>Cart</h1>
+          <table></table>
+          <button class="orderBtn">Order Now</button>
+    </main>
+  </body>
+</html>
